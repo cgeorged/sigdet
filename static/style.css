@@ -1,0 +1,177 @@
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-display: fallback;
+    background: url('cloud_bg.svg');
+    background-size: cover;
+    background-position: center;
+    line-height: 1.6;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-display: fallback;
+	background: url('cloud_bg.svg');
+	background-size: cover;
+	background-position: center;
+	line-height: 1.6;
+ }
+
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+/* Header styles */
+.header {
+  text-align: center;
+}
+
+/* Inputs styles */
+.inputs {
+  background-color: #fff;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+label {
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.imgpath {
+  width: 65%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.bwr {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.altypes {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Button styles */
+.button-container {
+  text-align: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Results styles */
+.results {
+  background-color: #fff;
+  padding: 30px;
+}
+
+#loadingDiv {
+  text-align: center;
+}
+
+
+
+#image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#image-container img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+  }
+
+  .inputs {
+    padding: 15px;
+  }
+
+  .imgpath {
+    font-size: 0.8rem;
+  }
+
+  .bwr {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
+  .altypes {
+    font-size: 0.8rem;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
+  .results {
+    padding: 15px;
+  }
+}

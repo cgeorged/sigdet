@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Handwritten Signature Detection using Deep Learning Models</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="preload" as="font">
+<link href="/static/style.css" rel="stylesheet" type="text/css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body>
+	<div class="container">
+
+	 <div class="header">
+      <h1>Handwritten Signature Detection</h1>
+    </div>
+    <div class="inputs">
+
+      <form id="upload-form">
+
+        <div class="form-group">
+          <label>Select Image (*.jpg/*.pdf)</label>
+
+            <input type="file" name="image" id="image-select" style="Display:none">
+            <input type="text" class ="imgpath" id="fileName" disabled>
+            <button class="bwr"  id="browse-btn1">Browse</button>
+        </div>
+
+        <div class="form-group" >
+          <label hidden >Model</label>
+          <select id="Model" class="altypes" hidden>
+            <option value="face">Yolo8</option>
+            <option value="object">Yolo5</option>
+          </select>
+        </div>
+        <br>
+        <div class="button-container">
+          <input id="detect" class="btn" type="submit" value="Detect Signature">
+          <button id="train" class="btn" type="button" value="train the set">Start Training</button>
+          <button id="load" class="btn" type="button" value="load new model" hidden>Load new Model</button>
+        </div>
+
+      </form>
+
+    </div>
+
+    <div class="results">
+       <div id="loadingDiv" style="display: none;">
+        <img src="{{ url_for('static', filename='loading.gif') }}" alt="Loading...">
+      </div>
+      <div id="image-container"></div>
+    </div>
+
+
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
