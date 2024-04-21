@@ -3,6 +3,5 @@ requests
 Pillow
 PyMuPdf
 ultralytics
-debugpy # Required for debugging.
-gunicorn
+
 

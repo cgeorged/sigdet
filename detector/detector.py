@@ -3,14 +3,13 @@ import io
 import threading
 import traceback
 from io import BytesIO
-
 import fitz
 import ultralytics
 from PIL import Image
 from flask import jsonify
 from ultralytics import YOLO
 
-import signature
+
 
 ultralytics.checks()
 #
@@ -23,7 +22,7 @@ def detect(image_files):
         #Get predictions
         print("Starting inference on image")
         try:
-            result = signature.detector.custom_model(img, show=False, save=False)[0]
+            result = custom_model(img, show=False, save=False)[0]
         except:
             traceback.print_exc()
             print("Exception occured while inference on image")
@@ -73,7 +72,7 @@ def train_model():
 
 
 def loadModel():
-    signature.detector.custom_model = YOLO("runs/detect/train/weights/best.pt")
+    custom_model = YOLO("runs/detect/train/weights/best.pt")
     return "Load successful"
 
 

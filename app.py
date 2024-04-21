@@ -1,44 +1,35 @@
-"""
-A sample Hello World server.
-"""
+
 import os
-import signature.detector as dt
 import traceback
 from PIL import Image
 from flask import Flask, render_template, request, jsonify
+from detector.detector import extract_images_from_pdf, train_async, detect
 
-# pylint: disable=C0103
 app = Flask(__name__)
 
 
 @app.route('/')
 def hello():
-    """Return a friendly HTTP greeting."""
+
     message = "It's running!"
 
-    """Get Cloud Run environment variables."""
-    service = os.environ.get('K_SERVICE', 'sgdet')
-    revision = os.environ.get('K_REVISION', 'sgdet.1')
-
     return render_template('index.html',
-        message=message,
-        Service=service,
-        Revision=revision)
+        message=message)
 
 @app.route('/api/v1/detect', methods=['POST'])
-def detect():
+def process_detect():
     try:
         inputImg = []
         file = request.files['image']
         if file.filename.endswith('.pdf') or file.content_type == 'application/pdf':
-            inputImg = dt.extract_images_from_pdf(file)
+            inputImg = extract_images_from_pdf(file)
             print("Received pdf docs !")
         else:
             # Load image
             img = Image.open(file)
             inputImg.append(img)
 
-        result = dt.detect(inputImg)
+        result = detect(inputImg)
         return jsonify({'images': result})
     except Exception as e:
         traceback.print_exc()
@@ -49,7 +40,7 @@ def detect():
 
 @app.route('/api/v1/train', methods=['POST'])
 def train():
-    result = dt.train_async()
+    result = train_async()
     return result
 
 
