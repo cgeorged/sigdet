@@ -13,8 +13,9 @@ from ultralytics import YOLO
 
 ultralytics.checks()
 #
-custom_model = YOLO("runs/detect/train/weights/best.pt")
 training_thread = None
+custom_model = None
+
 def detect(image_files):
     base64_images = []
     for img in image_files:
@@ -26,7 +27,11 @@ def detect(image_files):
         except:
             traceback.print_exc()
             print("Exception occured while inference on image")
+            continue
         print("Inference on image is completed.")
+        if result is None:
+            print("No signature found in the image")
+            continue
         #Filter for a specific class
         target_class_id = 1  # Replace with the ID of the class you want to detect
         filtered_results = [r for r in result if r.boxes.cls[0] == target_class_id]
@@ -45,6 +50,13 @@ def detect(image_files):
             base64_images.append(base64_image)
     print("Inference on all images is completed.")
     return base64_images
+
+def load_model(path = "runs/detect/train/weights/best.pt"):
+    global custom_model
+    if custom_model is None:
+        print("Loading model...")
+        custom_model = YOLO(path)
+        print("Model loaded successfully.")
 
 
 def train_async():
@@ -95,3 +107,4 @@ def extract_images_from_pdf(pdf_file):
 
     docs.close()
     return images
+

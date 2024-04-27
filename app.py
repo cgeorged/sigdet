@@ -3,7 +3,7 @@ import os
 import traceback
 from PIL import Image
 from flask import Flask, render_template, request, jsonify
-from detector.detector import extract_images_from_pdf, train_async, detect, s_hash
+from detector.detector import extract_images_from_pdf, train_async, detect, s_hash, load_model
 
 # Create a Flask app
 app = Flask(__name__)
@@ -72,6 +72,7 @@ def train():
 # Run the app
 if __name__ == '__main__':
 
+    load_model()
     # Get the server port from the environment variables
     server_port = os.environ.get('PORT', '8080')
 

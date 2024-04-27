@@ -1,33 +1,22 @@
 import unittest
+import io
+from PIL import Image
+from detector.detector import detect, extract_images_from_pdf, load_model
 
-from PIL.Image import Image
 
-import detector_test
+class DetectorTests(unittest.TestCase):
 
-class DetectorTestCase(unittest.TestCase):
 
-    def test_detect(self):
-        # Create a mock image
-        image = Image.new('RGB', (100, 100))
+    def test_extract_images_from_pdf(self):
+        # Open the PDF file
+        with open('../tests/sample_signature_form_carleton_u_v5.pdf', 'rb') as f:
+            # Extract the images from the PDF file
+            images = extract_images_from_pdf(f)
 
-        # Create a mock signature
-        signature = Image.new('RGB', (100, 100))
+        # Check that the result is a list
+        self.assertIsInstance(images, list)
 
-        # Call the detect() function
-        result = detector.detect([image], [signature])
 
-        # Assert that the result is a list of bounding boxes
-        self.assertIsInstance(result, list)
 
-        # Assert that each bounding box is a tuple
-        for bounding_box in result:
-            self.assertIsInstance(bounding_box, tuple)
-
-        # Assert that each bounding box has four elements
-        for bounding_box in result:
-            self.assertEqual(len(bounding_box), 4)
-
-        # Assert that each bounding box element is a float
-        for bounding_box in result:
-            for element in bounding_box:
-                self.assertIsInstance(element, float)
+if __name__ == '__main__':
+    unittest.main()
