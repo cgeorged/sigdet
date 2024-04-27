@@ -70,10 +70,16 @@ fileInput.addEventListener('change', (e) => {
 });
 
 $('#train').click(function() {
-
-  $.ajax({
+   key = document.getElementById('fileName').value;
+   $.ajax({
     url: '/api/v1/train',
     method: 'POST',
+    headers: {
+    'Content-Type': 'application/json'
+    },
+    data: JSON.stringify({
+        key: key
+    }),
     success: function(response) {
       console.log(response);
     },

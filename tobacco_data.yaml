@@ -1,0 +1,5 @@
+train: tobacco/images/train
+val: tobacco/images/valid
+
+nc: 2
+names: ['Logo', 'Signature']

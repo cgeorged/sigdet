@@ -69,12 +69,11 @@ def train_model():
     path = model.export(format="onnx")
     print("Training completed.")
 
-
-
-def loadModel():
-    custom_model = YOLO("runs/detect/train/weights/best.pt")
-    return "Load successful"
-
+def s_hash(data):
+    hash_value = 0
+    for char in data:
+        hash_value += ord(char)
+    return hash_value
 
 def extract_images_from_pdf(pdf_file):
     images = []

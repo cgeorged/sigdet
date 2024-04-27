@@ -2,7 +2,7 @@ import unittest
 
 from PIL.Image import Image
 
-import detector
+import detector_test
 
 class DetectorTestCase(unittest.TestCase):
 
