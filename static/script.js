@@ -81,10 +81,10 @@ $('#train').click(function() {
         key: key
     }),
     success: function(response) {
-      console.log(response);
+       alert(response.message);
     },
-    error: function(xhr) {
-      console.log(xhr.statusText);
+    error: function(response) {
+      alert(response.responseJSON.error);
     }
   });
 
@@ -96,10 +96,10 @@ $('#load').click(function() {
     url: '/api/v1/load',
     method: 'POST',
     success: function(response) {
-      console.log(response);
+      alert(response.responseJSON.message);
     },
-    error: function(xhr) {
-      console.log(xhr.statusText);
+    error: function(response) {
+      alert(response.responseJSON.error);
     }
   });
 

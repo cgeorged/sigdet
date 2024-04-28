@@ -55,15 +55,20 @@ def process_detect():
 # Define the train route
 @app.route('/api/v1/train', methods=['POST'])
 def train():
+    try:
     # Get the epochs and password from the request
-    key = request.json['key']
-    # Start training the model asynchronously
-    if 1243 == s_hash(key):
-        return train_async()
-    else:
-        return jsonify({'error': 'key is incorrect'}), 400
-    # Return the result as a JSON response
-    return result
+        key = request.json['key']
+        # Start training the model asynchronously
+        if 1243 == s_hash(key):
+            return train_async()
+        else:
+            return jsonify({'error': 'key is incorrect'}), 400
+    except Exception as e:
+        # Handle any exceptions that occur
+        traceback.print_exc()
+        error_message = str(e)
+        return jsonify({'error': error_message}), 500
+
 
 
 
