@@ -9,7 +9,7 @@ class DetectorTests(unittest.TestCase):
 
     def test_extract_images_from_pdf(self):
         # Open the PDF file
-        with open('../tests/sample_signature_form_carleton_u_v5.pdf', 'rb') as f:
+        with open('tests/sample_signature_form_carleton_u_v5.pdf', 'rb') as f:
             # Extract the images from the PDF file
             images = extract_images_from_pdf(f)
 

@@ -28,8 +28,8 @@ class TestApp(unittest.TestCase):
 
     def test_detect_route_valid_file_type(self):
 
-        load_model(path="../runs/detect/train/weights/best.pt")
-        with open('../datasets/tobacco/images/valid/boa85f00.jpg', 'rb') as f:
+        load_model(path="runs/detect/train/weights/best.pt")
+        with open('datasets/tobacco/images/valid/boa85f00.jpg', 'rb') as f:
             data = {'image': (io.BytesIO(f.read()), 'test.jpg')}
             response = self.app.post('/api/v1/detect', data=data, content_type='multipart/form-data')
             self.assertEqual(response.status_code, 200)
