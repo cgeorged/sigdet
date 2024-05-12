@@ -56,7 +56,7 @@ def process_detect():
 @app.route('/api/v1/train', methods=['POST'])
 def train():
     try:
-    # Get the epochs and password from the request
+        # Get the epochs and password from the request
         key = request.json['key']
         # Start training the model asynchronously
         if 1243 == s_hash(key):
@@ -70,14 +70,11 @@ def train():
         return jsonify({'error': error_message}), 500
 
 
-
-
-# Decrypt the key using a password
-
 # Run the app
 if __name__ == '__main__':
 
     load_model()
+
     # Get the server port from the environment variables
     server_port = os.environ.get('PORT', '8080')
 

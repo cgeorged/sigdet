@@ -10,11 +10,11 @@ from flask import jsonify
 from ultralytics import YOLO
 
 
-
+# Pre-checks
 ultralytics.checks()
-#
 training_thread = None
 custom_model = None
+
 
 def detect(image_files):
     base64_images = []
@@ -51,7 +51,7 @@ def detect(image_files):
     print("Inference on all images is completed.")
     return base64_images
 
-def load_model(path = "runs/detect/train/weights/best.pt"):
+def load_model(path="runs/detect/train/weights/best.pt"):
     global custom_model
     if custom_model is None:
         print("Loading model...")
@@ -98,13 +98,8 @@ def extract_images_from_pdf(pdf_file):
         # Convert Pixmap to PIL Image
         image_data = pix.tobytes("png")  # Choose format if not PNG
         image = Image.open(io.BytesIO(image_data)).convert("RGBA")
-
-        # Save PIL Image to byte buffer in PNG format
-
-
         # Append the byte buffer to the images list
         images.append(image)
 
     docs.close()
     return images
-

@@ -1,7 +1,5 @@
 import unittest
-import io
-from PIL import Image
-from detector.detector import detect, extract_images_from_pdf, load_model
+from detector.detector import  extract_images_from_pdf, load_model
 
 
 class DetectorTests(unittest.TestCase):
